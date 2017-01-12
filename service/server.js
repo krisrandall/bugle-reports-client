@@ -29,13 +29,16 @@ api.post('/dataType/:name', DataType.post);
 //Post a record
 api.post('/record/:dataType', Record.post);
 
-
 //Post a report
 api.post('/report', Report.post);
 
+api.get('/report/:id', Report.get);
+
+api.get('/run/:id', Report.run);
+
 //Start server
-Http.createServer(api).listen(8081);
-console.log("Web service listening on 8081");
+Http.createServer(api).listen(Utils.PORT);
+console.log("Web service listening on", Utils.PORT);
 
 //Exception safety net
 process.on('uncaughtException', function(err) {

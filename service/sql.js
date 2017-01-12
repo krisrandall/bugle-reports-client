@@ -2,7 +2,7 @@
 var Async = require('async');
 var Crate = require('node-crate');
 var Utils = require('./utils');
-var Sdk = require('../sdk/newnrg-reporter-sdk.js');
+var Sdk = require('../sdk/bugl-reporter-sdk.js');
 
 
 Crate.connect ('localhost', 4200);
@@ -69,8 +69,12 @@ exports.insertMulti = function(table, records, requiredFields, callback) {
 }
 
 exports.insertSingle = function(table, record, requiredFields, callback) {
-    var result;
-    var validation = validateRecord(record, requiredFields);
+    var result, validation = {};
+    if (requiredFields && requiredFields.constructor == Array) {
+    	validation = validateRecord(record, requiredFields);
+    	record = validation.record;
+    }
+    
     Crate.insert(table, validation.record)
 		.success((data)=>{
 		    result = validation;
@@ -79,4 +83,38 @@ exports.insertSingle = function(table, record, requiredFields, callback) {
 		.error((err)=>{
 			callback(err, validation);
 		});
+}
+
+exports.getOne = function(table, id, callback) {
+	Crate.execute('select * from ' + table + ' where id = ?', [id])
+		.success(function(data){
+			if (data.rows.length == 0) {
+				callback("Record not found", []);
+			}
+			callback(null, data.json[0])
+		})
+		.error(callback);
+}
+
+exports.query = function(query, paramValues, callback) {
+	Crate.execute(query, paramValues)
+		.success(function(data) {
+			callback(null, data);
+		})
+		.error(callback)
+}
+
+function makeRecordJson(data) {
+	var json = data.rows.map(function (e) {
+            var x = {}
+            for (var i = 0; i < data.cols.length; i += 1) {
+              /*if (data.col_types && data.col_types[i] === crateTypes.TIMESTAMP) {
+                x[data.cols[i]] = new Date(e[i])
+              } else {*/
+                x[data.cols[i]] = e[i]
+              //}
+            }
+            return x
+          });
+          return json;
 }

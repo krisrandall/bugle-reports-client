@@ -1,14 +1,14 @@
 var Sdk = require('./newnrg-reporter-sdk.js');
 
 var client = new Sdk.Client({host:'45.79.83.93', port: 8081});
-client.createDataType('questionnaire2', function(err, data) {
+client.createDataType('questionnaire', function(err, data) {
     if (err) {
         console.error(err);
     }
     else {
         console.log(JSON.stringify(data));
     }
-})
+});
 
 client.addRecord('questionnaire', 
     {
