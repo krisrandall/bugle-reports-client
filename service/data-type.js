@@ -4,8 +4,9 @@ var Utils = require('./utils.js');
 exports.post = function(req, res) {
     
     var tableSchema = {
-        id: "string primary key",
-        program_id: "string",
+        id: "string primary key"
+    };
+    /*    program_id: "string",
         custodian: "string", //Who controls this data? Partner ID
         contributor: "string", //User ID
         item_id: "string",
@@ -14,7 +15,7 @@ exports.post = function(req, res) {
         text_value: "string",
         timestamp: "timestamp",
         overall_start: "timestamp" //Overall starting point, used for reporting overall progress. Avoids awkward queries 
-    }  
+    }  */
     var createData = {};
     createData[req.params.name] = tableSchema;
     Sql.Crate.create(createData).success(function(data) {

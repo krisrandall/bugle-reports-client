@@ -71,8 +71,14 @@ exports.run = function(req, res) {
         if (reportData && reportSchema) {
             result = {
                 name: reportSchema.name,
-                columns: reportData.cols,
-                rows: reportData.json
+                cols: reportData.cols,
+                rows: reportData.rows,
+                colTypes: reportData.col_types.map(function(item){
+                    if ([6,7,8,9,10,11].indexOf(item)>-1) return "number"
+                    else if (item == 4) return "string"
+                    else if (item == 100) return "array"
+                    else return "object"
+                })
             }  
         }
 

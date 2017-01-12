@@ -28,12 +28,6 @@ function validateRecord(record, requiredFields) {
 
 	var missingFields = requiredFields.filter((f)=>{ return (typeof(record[f]) == "undefined") });
 
-	//Remove disallowed extra fields
-	//This can also be done by specifying the column policy as strict
-	/*var finalRecord = {};
-	requiredFields.concat(otherFields).forEach((f)=>{
-		finalRecord[f] = record[f];		
-	});*/
 	var finalRecord = record;
 	
 	return {
@@ -104,17 +98,3 @@ exports.query = function(query, paramValues, callback) {
 		.error(callback)
 }
 
-function makeRecordJson(data) {
-	var json = data.rows.map(function (e) {
-            var x = {}
-            for (var i = 0; i < data.cols.length; i += 1) {
-              /*if (data.col_types && data.col_types[i] === crateTypes.TIMESTAMP) {
-                x[data.cols[i]] = new Date(e[i])
-              } else {*/
-                x[data.cols[i]] = e[i]
-              //}
-            }
-            return x
-          });
-          return json;
-}

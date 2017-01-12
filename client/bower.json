@@ -1,0 +1,22 @@
+{
+  "name": "bugl-reports-client",
+  "homepage": "ls",
+  "authors": [
+    "Barry Earsman"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "google-chart": "GoogleWebComponents/google-chart#^1.1.1",
+    "iron-ajax": "PolymerElements/iron-ajax#^1.4.3"
+  }
+}
