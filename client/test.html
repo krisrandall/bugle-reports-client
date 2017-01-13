@@ -1,9 +1,18 @@
 <html>
     <head>
-        <script src="./bower_components/webcomponents.min.js"></script>
-        <link rel="import" href="./webcomponents/bugl-chart/bugl-chart.html" />
+        <script src="./bower_components/webcomponentsjs/webcomponents.min.js"></script>
+        <!--link rel="import" href="./webcomponents/bugl-base-chart/bugl-base-chart.html" /-->
+        <link rel="import" href="./bower_components/google-chart/google-chart.html" />
+        <link rel="import" href="./webcomponents/bugl-sleep-chart/bugl-sleep-chart.html" />
+
     </head>
     <body>
-          <bugl-chart></bugl-chart>
+          <google-chart
+              type='pie'
+              options='{"title": "Sleep today", "pieHole": 0.4, "slices":{ "0": {"color": "blue"}, "1":{"color": "transparent"}}}'
+              cols='[{"label":"Activity", "type":"string"}, {"label": "hours", "type": "number"}]'
+              rows='[["sleep", 8],["awake", 24]]'
+          ></google-chart>
+          <bugl-sleep-chart color="green" remainder-color="silver"></bugl-donut-chart>
     </body>
 </html>
