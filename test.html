@@ -7,12 +7,6 @@
 
     </head>
     <body>
-          <google-chart
-              type='pie'
-              options='{"title": "Sleep today", "pieHole": 0.4, "slices":{ "0": {"color": "blue"}, "1":{"color": "transparent"}}}'
-              cols='[{"label":"Activity", "type":"string"}, {"label": "hours", "type": "number"}]'
-              rows='[["sleep", 8],["awake", 24]]'
-          ></google-chart>
-          <bugl-sleep-chart color="green" remainder-color="silver"></bugl-donut-chart>
+          <bugl-sleep-chart color="green" remainder-color="silver" url='URL_OF_BUGLE_REPORTING_SERVER'></bugl-donut-chart>
     </body>
 </html>
