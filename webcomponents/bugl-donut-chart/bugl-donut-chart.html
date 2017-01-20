@@ -111,7 +111,9 @@
                     this._total = mainSlice[1];
                     var donutRows = [];
                     donutRows.push(mainSlice);
-                    donutRows.push(['remainder', this.maxValue - this._total]); //Second row represents the remainder
+                    if (mainSlice[1]<this.maxValue) {
+                        donutRows.push(['remainder', this.maxValue - this._total]); //Second row represents the remainder
+                    }
                     this.set('rows', donutRows);
                     this.setResult(this._total.toString());
                     this.fire('data', this._total);
