@@ -2,7 +2,9 @@
 
 ### Requirements
 
-You must have access to a Bugle Reporting Server to use the Bugle Reports Client
+You must have access to a [**Bugle Reporting Server**](https://github.com/bazmatic/bugle-reports) to use the Bugle Reports Client
+
+
 ### Install
 
     $ bower install bugle-reports-client --save
@@ -21,4 +23,4 @@ You must have access to a Bugle Reporting Server to use the Bugle Reports Client
     <bugl-sleep-chart color="green" remainder-color="silver" 
                       url="URL_OF_BUGLE_REPORTING_SERVER"></bugl-donut-chart>
 
-
+![](report-example.png)
