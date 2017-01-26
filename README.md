@@ -21,6 +21,6 @@ You must have access to a [**Bugle Reporting Server**](https://github.com/bazmat
 ...
 
     <bugl-sleep-chart color="green" remainder-color="silver" 
-                      url="URL_OF_BUGLE_REPORTING_SERVER"></bugl-donut-chart>
+                      url="http://URL_OF_BUGLE_REPORTING_SERVER/run/(report_id)?parameters=(params)"></bugl-donut-chart>
 
 ![](report-example.png)

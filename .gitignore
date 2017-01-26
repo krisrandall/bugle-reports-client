@@ -1,2 +1,12 @@
-bower_components
+
+# these are the bower dependencies, installed in the root dir so our pathing remains ok :
+
+google-apis/
+google-chart/
+iron-ajax/
+iron-jsonp-library/
+polymer/
+promise-polyfill/
+webcomponentsjs/
+
 
